@@ -1,0 +1,56 @@
+@import "./src/colors.scss";
+
+@keyframes fadein {
+  from { opacity: 0}
+  to   { opacity: 1}
+}
+
+.content-frame {
+  margin:3%;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: 20px;
+  animation: fadein 1.5s;
+
+}
+
+#btn-questionnaire {
+  left: 40%;
+  top:78%;
+  position: absolute;
+  width:20%;
+  height:15%;
+  margin: 10px;
+  background-color: $main-button-bkg;
+  color:$main-button-text;
+  font-size: 35px;
+  border:2px solid $navbar-text;
+  border-radius: 25px;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: #b7f1fdb1;
+    transition: all 0.5s ease-in-out;
+
+  }
+
+  a{
+    text-decoration: none;
+    &:visited{
+      color:$main-button-text;
+    }
+  }
+
+
+
+}
+.main-content {
+    font-size: 25px;
+    font-weight: 100;
+    color: $main-text;
+  }
+
+.text{
+  flex-basis: 90%;
+  margin-left: 8%;
+}

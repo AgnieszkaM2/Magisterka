@@ -1,0 +1,116 @@
+@import "./colors.scss";
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Arial;
+  background: linear-gradient(135deg, hsla(283, 71%, 23%, 1) 9%, hsla(211, 58%, 45%, 1) 41%, hsla(245, 91%, 74%, 1) 63%, hsla(190, 84%, 76%, 1) 89%);
+  background-attachment: fixed;
+
+}
+
+body.dark-theme {
+  font-family: Arial;
+  background: linear-gradient(135deg, hsla(244, 94%, 7%, 1) 0%, hsla(270, 71%, 20%, 1) 35%, hsla(272, 17%, 37%, 1) 100%);
+  background-attachment: fixed;
+
+}
+
+.navbar {
+  margin-top: 3.8%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+nav {
+  background: $navbar-bkg;
+  border: 2px solid $navbar-frame;
+  border-radius: 15px;
+
+  .menuItems {
+    list-style: none;
+    display: flex;
+    margin-left: 40px;
+
+    li {
+      margin-left: 25px;
+      transition: all 0.5s ease-in-out;
+      border-right: 2px solid black;
+      padding: 15px;
+      padding-right: 45px;
+      margin-right:15px;
+
+      a {
+        text-decoration: none;
+        color: $navbar-text;
+        font-size: 24px;
+        font-weight: 300;
+        position: relative;
+        padding:20px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+      }
+      /*
+
+      &::before {
+        content: li;
+        transition: 0.5s;
+        background-color: #d6f8ffd5;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 0;
+        overflow: hidden;
+      }*/
+
+      &:hover {
+        background-color: #d6f8ff85;
+        transition: all 0.5s ease-in-out;
+        height:100%;
+        transform: scale(1.1);
+        border: 0 solid white;
+        border-radius: 20px;
+
+      }
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  background: #8ee4f56f;
+}
+
+::-webkit-scrollbar-track {
+ background: #8ee4f54e;
+
+
+}
+::-webkit-scrollbar-thumb {
+  background-color: #4110558e;
+  border-radius: 5px;
+
+}
+::-webkit-scrollbar-track-piece{
+  background: #8ee4f566;
+
+}
+
+.logo {
+  li {
+    padding-right: 50px !important;
+    a{
+      &:hover{
+        background-color: $navbar-bkg !important;
+      }
+    }
+
+  }
+
+}
