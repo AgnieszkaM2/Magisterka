@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace DiagnosticApp_API.Controllers
 {
     [Route("api/[controller]")]
@@ -28,5 +29,6 @@ namespace DiagnosticApp_API.Controllers
                 .Where(s => s.IdSymptom == id)
                 .ToListAsync());
         }
+
     }
 }
