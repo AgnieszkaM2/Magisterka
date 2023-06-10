@@ -22,7 +22,7 @@ namespace DiagnosticApp_API.Controllers
             return Ok( await _context.Diseases.ToListAsync() );
         }
 
-        [HttpGet("GetSpecific")]
+        [HttpGet("GetSpecific/{id}")]
         public async Task<ActionResult<List<Disease>>> GetSpecificDiseases(int id)
         {
             return Ok(await _context.Diseases

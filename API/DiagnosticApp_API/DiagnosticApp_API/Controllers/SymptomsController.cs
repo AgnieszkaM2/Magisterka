@@ -21,7 +21,7 @@ namespace DiagnosticApp_API.Controllers
             return Ok(await _context.Symptoms.ToListAsync());
         }
 
-        [HttpGet("GetSpecific")]
+        [HttpGet("GetSpecific/{id}")]
         public async Task<ActionResult<List<Disease>>> GetSpecificSymptom(int id)
         {
             return Ok(await _context.Symptoms
