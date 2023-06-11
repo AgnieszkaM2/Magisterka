@@ -10,15 +10,11 @@
     <div class="list-body">
       <ul>
         <div *ngFor='let disease of diseasesList'>
-          <li title="{{disease.description}}">{{disease.name}}</li>
+          <li title="{{disease.description}}
+Lekarz: {{disease.specialist}}">{{disease.name}}</li>
 
         </div>
       </ul>
-      <div>
-        <h1>{{disease[0].name}}</h1><br>
-        <h3>{{disease[0].description}}</h3>
-
-      </div>
 
     </div>
   </div>

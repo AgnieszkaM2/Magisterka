@@ -18,3 +18,44 @@
 
 }
 
+.list-body li{
+  list-style: none;
+  font-size: 30px;
+  padding:1%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  margin:0.5%;
+  background-color: $navbar-bkg;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: #d0f5fdac;
+    transition: all 0.5s ease-in-out;
+
+  }
+
+}
+
+.list-body {
+  padding-left: 6%;
+  padding-right: 8%;
+
+}
+
+li[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  text-align-last:left;
+  white-space: pre-wrap;
+  background-color: #a9ebfafe;
+  background-position: center;
+  border-radius: 5px;
+  border: 0.5px solid rgba(255, 255, 255, 0.268);
+  right: 0;
+  top:0;
+  font-size: 21px;
+  width: 50%;
+  height: 30%;
+}
+
+

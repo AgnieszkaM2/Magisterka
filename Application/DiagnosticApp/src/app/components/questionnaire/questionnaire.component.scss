@@ -9,13 +9,28 @@
   margin:3%;
   margin-left: 15%;
   margin-right: 15%;
+  margin-bottom: 15%;
   padding: 20px;
   background-color: $form-bkg;
   border: 5px solid white;
   border-radius: 15px;
   animation: fadein 1.5s;
   color:$form-text;
-  height:90%;
+  height:95%;
+
+}
+.content-frame2 {
+  margin:3%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 15%;
+  padding: 20px;
+  background-color: $form-bkg;
+  border: 5px solid white;
+  border-radius: 15px;
+  animation: fadein 1.5s;
+  color:$form-text;
+  height:auto;
 
 }
 
@@ -41,7 +56,7 @@
 
 #btn-previous {
   left: 20%;
-  top:110%;
+  top:105%;
   position: absolute;
   width:10%;
   height:8%;
@@ -95,6 +110,144 @@
   &:hover {
     transform: scale(1.01);
     background-color: $form-button-highlight;
+    transition: all 0.5s ease-in-out;
+  }
+
+}
+
+
+.quiz-button{
+  box-sizing: border-box;
+  left: 20%;
+  top:75%;
+  position: absolute;
+  width:58%;
+  height:10%;
+  margin: 10px;
+  background-color: $form-button;
+  color:$form-text;
+  font-size: 25px;
+  border:2px solid $form-button;
+  border-radius: 10px;
+
+  &:hover {
+    transform: scale(1.01);
+    background-color: $form-button-highlight;
+    transition: all 0.5s ease-in-out;
+  }
+
+}
+.quiz-button-neg{
+  box-sizing: border-box;
+  left: 20%;
+  top:90%;
+  position: absolute;
+  width:58%;
+  height:10%;
+  margin: 10px;
+  background-color: $form-button;
+  color:$form-text;
+  font-size: 25px;
+  border:2px solid $form-button;
+  border-radius: 10px;
+
+  &:hover {
+    transform: scale(1.01);
+    background-color: $form-button-highlight;
+    transition: all 0.5s ease-in-out;
+  }
+
+}
+.btn_input{
+    opacity: 0;
+  position: fixed;
+  width: 0;
+}
+.btn_label{
+  color:$form-text;
+  text-align: center;
+  display: inline-block;
+  width:100%;
+  height: 100%;
+  margin: 0;
+  background-color: $form-button;
+  box-sizing: border-box;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom:25px;
+  cursor: pointer;
+}
+.btn_label:hover{
+  background-color: $form-button-highlight;
+}
+.btn_input:active + label{
+  background-color: $form-button-highlight;
+}
+.btn_input:checked + label {
+  background-color: $form-button-highlight;
+
+}
+.prel-check input[type="checkbox"]{
+  margin-bottom: 8px;
+  width: 20px;
+  height: 20px;
+
+}
+.prel-check {
+  font-size: 25px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+
+}
+.check-after input[type="checkbox"]{
+  margin-bottom: 8px;
+  width: 20px;
+  height: 20px;
+
+}
+.check-after {
+  font-size: 25px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+
+}
+#btn-next2 {
+  right: 20%;
+  bottom:-890%;
+  position: absolute;
+  width:10%;
+  height:8%;
+  margin: 10px;
+  background-color: $navbar-text;
+  color:white;
+  font-size: 25px;
+  border-radius: 20px;
+
+  &:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+    transition: all 0.5s ease-in-out;
+  }
+
+}
+#btn-next1 {
+  right: 20%;
+  top:116%;
+  position: absolute;
+  width:10%;
+  height:8%;
+  margin: 10px;
+  background-color: $navbar-text;
+  color:white;
+  font-size: 25px;
+  border-radius: 20px;
+
+  &:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
     transition: all 0.5s ease-in-out;
   }
 

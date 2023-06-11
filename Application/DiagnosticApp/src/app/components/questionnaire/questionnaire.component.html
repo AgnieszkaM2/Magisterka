@@ -1,21 +1,59 @@
-<div class="content-frame">
-  <div class="test-frame">
+<div class="content-frame" *ngIf="isDone==false">
+  <section class="prel-check" *ngIf="isPreliminaryDone==false">
+    <h3 align="center">Pytanie wstępne - wyniki badań:</h3>
+    <form [formGroup]="form" (ngSubmit)="submit1()" novalidate>
+      <div *ngFor="let symptom of preliminarySymptoms; let i=index">
+        <input type="checkbox" formArrayName="selectedSymptoms" [value]="symptom.value" (change)="onCheckboxChange($event)"
+        />
+        {{ symptom.name}}
+      </div>
+      <button id="btn-next1" type="submit">Zapisz</button>
+    </form>
+    <br><br><br><br><br>
+  </section>
+  <div class="test-frame" *ngIf="isPreliminaryDone==true&&isDone==false">
     <div class="test-header">
-      <h2 style="font-size:35px; margin: 20px; margin-bottom:35px;" align="center">Pytanie:</h2>
+      <h2 style="font-size:35px; margin: 20px; margin-bottom:35px;" align="center">Pytanie {{iterator+1}} / {{QuestionsList.length}} :</h2>
       <hr style="height: 5px; width:95%; background-color: white; border-radius: 5px;">
       <br>
     </div>
-    <div class="list-body">
-      <div class="question">
-        <h1 style="font-size:25px; margin: 20px;" align="center">Treść pytania</h1>
-        <br>
+    <form [formGroup]="quizForm" align="center" (ngSubmit)="submit()">
+      <div class="list-body"><br><br>
+        <div class="question">
+          <h1 style="font-size:25px; margin: 20px;" align="center">{{QuestionsList[iterator].question}}</h1>
+          <br>
+        </div>
+        <div class="answers">
+          <div class="quiz-button">
+            <input class="btn_input" type="radio" id="answer-positive" formControlName="answers" name="answers" value="{{QuestionsList[iterator].questionValue}}">
+            <label class="btn_label" for="answer-positive">Tak</label><br>
+          </div>
+          <div class="quiz-button-neg">
+            <input class="btn_input" type="radio" id="answer-negative" formControlName="answers" name="answers" value="0">
+            <label class="btn_label" for="answer-negative">Nie</label><br>
+          </div>
+
+          <button type="submit" align="right" id="btn-next">Dalej</button>
+        </div>
       </div>
-      <div class="answers">
-        <button align="center" id="btn-positive">Tak</button><br>
-        <button align="center" id="btn-negative">Nie</button><br>
-        <button align="left" id="btn-previous">Cofnij</button>
-        <button align="right" id="btn-next">Dalej</button>
-      </div>
-    </div>
+    </form>
   </div>
 </div>
+<div class="content-frame2" *ngIf="isDone==true">
+  <section class="check-after">
+    <div class="test-header">
+      <h2 style="font-size:35px; margin: 20px; margin-bottom:35px;" align="center">Zaznacz wszystkie możliwe pozostałe objawy:</h2>
+      <hr style="height: 5px; width:95%; background-color: white; border-radius: 5px;">
+      <br>
+    </div>
+    <form [formGroup]="form3" (ngSubmit)="submit2()" novalidate>
+      <div *ngFor="let symptom of SymptomsList; let i=index">
+        <input type="checkbox" formArrayName="otherSymptoms" [value]="symptom.idSymptom" (change)="onCheckboxChange2($event)"
+        />
+        {{ symptom.name}}
+      </div>
+      <button id="btn-next2" type="submit">Zapisz</button>
+    </form>
+  </section>
+</div>
+
