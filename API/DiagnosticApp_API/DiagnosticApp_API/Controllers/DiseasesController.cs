@@ -30,14 +30,6 @@ namespace DiagnosticApp_API.Controllers
                 .ToListAsync());
         }
 
-        [HttpPost("IdList")]
-        public async Task<ActionResult<List<Disease>>> IdList(int[] idlist)
-        {
-            var receivedList = idlist;
-            int []temp = { 3, 9, 1, 4, 5 };
-            
-            return Ok(temp);
-        }
 
         [HttpPost("GetAllSpecific")]
         public async Task<ActionResult<List<Disease>>> GetAllSpecificDiseases(int []id)
