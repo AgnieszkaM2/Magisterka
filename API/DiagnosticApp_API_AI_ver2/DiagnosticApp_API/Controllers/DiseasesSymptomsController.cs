@@ -5,6 +5,7 @@ using System;
 using DiagnosticApp_API.System1;
 using System.Net;
 using System.IO;
+using DiagnosticApp_API.System2;
 
 namespace DiagnosticApp_API.Controllers
 {
@@ -36,14 +37,9 @@ namespace DiagnosticApp_API.Controllers
         }
 
 
-        [HttpPost("Diagnose")]
+       /* [HttpPost("Diagnose")]
         public async Task<ActionResult<List<Disease>>> IdList(int[] idlist)
         {
-            int[] dis = new int[26];
-            string file = @"D:\Desktop\test.txt";
-            double totalTime;
-            DateTime startTime = DateTime.Now;
-
             var receivedList = idlist;
             var edges= await _context.DiseasesSymptoms
                 .Include(s => s.IdDiseaseNavigation).Select(s => new { s.IdSymptom, s.IdDisease,  s.IdSymptomNavigation.Weight })
@@ -51,7 +47,6 @@ namespace DiagnosticApp_API.Controllers
             var baseDisease= await _context.Diseases.Select(s => new { s.IdDisease, s.SumWeight, s.SymptomsCount }).ToListAsync() ;
 
             int accuracyLevel = 1;
-
 
             List<DiseaseVertex> diseases = new List<DiseaseVertex>() ;
             foreach (var d in baseDisease) {
@@ -65,26 +60,20 @@ namespace DiagnosticApp_API.Controllers
 
             var result= graph.Diagnose(diseases,receivedList,accuracyLevel) ;
 
-            totalTime=getTime(startTime) ;
+            return Ok(result.OrderByDescending(x => x.result));
+        }*/
 
-            foreach (var item in result)
-            {
-                dis[item.Id - 1] = item.result;
-            }
-            var baseContent = string.Join(";", dis);
-            var allContent = baseContent+";"+totalTime;
-            System.IO.File.AppendAllText(file, allContent + Environment.NewLine);
+        [HttpPost("Diagnose")]
+        public async Task<ActionResult<List<Disease>>> IdList(int[] idlist)
+        {
+            var receivedList = idlist;
+
+            int accuracyLevel = 1;
+
+            var result = AIDiagnosticSystem.Diagnose(receivedList, accuracyLevel);
 
             return Ok(result.OrderByDescending(x => x.result));
         }
 
-        static double getTime(DateTime start)
-        {
-            DateTime end = DateTime.Now;
-
-            TimeSpan ts = (end - start);
-            double timer = ts.TotalMilliseconds;
-            return timer;
-        }
     }
 }
