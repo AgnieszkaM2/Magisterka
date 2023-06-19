@@ -39,7 +39,7 @@
     </form>
   </div>
 </div>
-<div class="content-frame2" *ngIf="isDone==true">
+<div class="content-frame2" *ngIf="isDone==true&&isDiagnosed==false&&isDiagnoseNull==false">
   <section class="check-after">
     <div class="test-header">
       <h2 style="font-size:35px; margin: 20px; margin-bottom:35px;" align="center">Zaznacz wszystkie możliwe pozostałe objawy:</h2>
@@ -54,6 +54,47 @@
       </div>
       <button id="btn-next2" type="submit">Zapisz</button>
     </form>
+  </section>
+</div>
+<div class="content-frame2" *ngIf="isDiagnosed==true&&isDiagnoseNull==false">
+  <section class="check-after">
+    <div class="test-header">
+      <h2 style="font-size:35px; margin: 20px; margin-bottom:35px;" align="center">Dopasowane względem występujących objawów choroby:</h2>
+      <hr style="height: 5px; width:95%; background-color: white; border-radius: 5px;">
+      <br>
+    </div>
+    <div class="list-body">
+      <ul>
+        <div *ngFor='let item of Diagnose'>
+          <li>
+            <div id="diseaseName">
+              <h3>{{item.result}} % -- {{Diseases[item.id-1].name}}</h3>
+            </div>
+            <div id="diseaseDesc">
+              {{Diseases[item.id-1].description}}
+            </div><br>
+            <div id="diseaseSpec">
+              Lekarz: {{Diseases[item.id-1].specialist}}
+            </div>
+          </li>
+        </div>
+      </ul>
+
+    </div>
+  </section>
+</div>
+<div class="content-frame2" *ngIf="isDiagnoseNull==true">
+  <section class="check-after">
+    <div class="test-header">
+      <h2 style="font-size:35px; margin: 20px; margin-bottom:35px;" align="center">Niestety nie udało się dopasować choroby na podstawie podanych objawów.</h2>
+      <hr style="height: 5px; width:95%; background-color: white; border-radius: 5px;">
+      <br>
+    </div>
+    <div class="questionnaire-nav" (click)="redirect()">
+      <br>
+      <button align="center" id="btn-questionnaire"><a routerLink="/questionnaire" routerLinkActive="active" >Spróbuj ponownie</a></button>
+      <br>
+    </div>
   </section>
 </div>
 

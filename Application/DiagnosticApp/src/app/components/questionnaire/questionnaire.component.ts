@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import { empty, Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
 import { Question } from 'src/app/_models/question';
 import { QuestionnaireService } from 'src/app/services/questionnaire.service';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { Symptom } from 'src/app/_models/symptom';
 import { DiseasesService } from 'src/app/services/diseases.service';
+import { Disease } from 'src/app/_models/disease';
 
 @Component({
   selector: 'app-questionnaire',
@@ -61,14 +62,19 @@ export class QuestionnaireComponent implements OnInit{
   SelectedArray:any[]=[];
   isDone : boolean = false;
   isPreliminaryDone : boolean = false;
+  isDiagnosed : boolean = false;
+  isDiagnoseNull : boolean = false;
   iterator=0;
   FinalResults:any[]=[];
+  Diagnose: any;
+  Diseases: Disease[];
 
 
 
   ngOnInit(): void {
     this.getQuestionnaire();
     this.getSymptoms();
+    this.getDiseases();
   }
 
   getQuestionnaire() {
@@ -181,8 +187,62 @@ export class QuestionnaireComponent implements OnInit{
 
     this.FinalResults=this.FinalResults.concat(this.OtherAnswers);
     this.FinalResults= this.FinalResults.filter((value, index, self) => self.indexOf(value) === index);
+    this.FinalResults= this.FinalResults.map(Number);
+    this.FinalResults=this.FinalResults.filter(function(val) {return val !== 0;});
     console.log(this.FinalResults);
+    this.sendQuestionnaire();
 
+
+  }
+
+  sendQuestionnaire() {
+    let idlist = this.FinalResults;
+    if (idlist.length==0)
+      idlist=[];
+
+
+
+    this.questionnaire.sendQuestionnaire(idlist).subscribe(response => {
+      console.log(response);
+      this.Diagnose = response;
+      this.check();
+
+    }, error => {
+      console.log(error);
+    })
+
+  }
+
+  redirect(){
+    this.router.navigateByUrl("/questionnaire")
+    .then(() => {
+      window.location.reload();
+    });
+  }
+
+
+  check() {
+    if(this.Diagnose.length>0)
+    {
+      this.isDiagnosed=true;
+
+      document.documentElement.scrollTop = 0;
+    }
+    else if (this.Diagnose.length ==0)
+    {
+      this.isDiagnoseNull=true;
+      this.isDiagnosed=false;
+
+    }
+
+  }
+
+  getDiseases() {
+    this.disease.getDiseases().subscribe(response => {
+      this.Diseases = response;
+    }, error => {
+      console.log(error);
+    })
   }
 
 }

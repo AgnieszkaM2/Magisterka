@@ -25,7 +25,7 @@ namespace DiagnosticApp_API.System2
 
             foreach (var item in result)
             {
-                if(Math.Round(item.Value * 100)>10)
+                if(Math.Round(item.Value * 100)>=15)
                     finalResults.Add(new FinalResults { Id = Convert.ToInt32(item.Key), result = (int)Math.Round(item.Value * 100) });
             }
 

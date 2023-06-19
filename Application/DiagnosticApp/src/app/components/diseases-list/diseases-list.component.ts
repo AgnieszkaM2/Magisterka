@@ -16,12 +16,11 @@ export class DiseasesListComponent implements OnInit{
 
   diseasesList: Disease[];
   disease: any;
-  diseaseId: number =1;
+  diseaseId: number;
 
 
   ngOnInit(): void {
     this.getDiseases();
-    this.getDisease();
 
   }
 

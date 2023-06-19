@@ -14,9 +14,14 @@ export class QuestionnaireService {
   readonly BaseURL= environment.BaseURL;
 
   readonly getAllQuestions = this.BaseURL + "Questionnaire/GetAll";
+  readonly getDiagnose = this.BaseURL + "DiseasesSymptoms/Diagnose";
 
   getQuestionnaire() {
     return this.http.get<Question[]>(this.getAllQuestions);
+  }
+
+  sendQuestionnaire(data: any): Observable<any> {
+    return this.http.post(this.getDiagnose, data)
   }
 
 }
