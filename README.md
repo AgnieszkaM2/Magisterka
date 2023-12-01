@@ -12,15 +12,15 @@
 
 
 ## General Information
-Created as a basis of a Master's thesis. 
+Created as a basis of a Master's thesis.  
 Main purpose of this app is to perform a preliminary diagnosis of a few specific diseases based on provided by user symptoms.  
 The task of diagnosing is performed by developed for this app expert systems.  
 For the purpose of this app 26 diseases, with over 200 symptoms totally, were chosen. 
-Project includes three versions of REST API, each integrated with specific expert system for preliminary diseases diagnosis. 
-First expert system is based on algorithm to determine the degree of provided symptoms matching specific diseases. Solution implements weighted bipartite graph.
-Second expert system is based on machine learning and implements the multitarget regression for adequate possibility of comparison of its work with the first system.
-Third expert system is also based on machine learning, but it implements multiclass classification.
-All three systems are meant to deliver an overview on differences in performance and accuracy of possible solutions to the main app objectives.
+Project includes three versions of REST API, each integrated with specific expert system for preliminary diseases diagnosis.  
+First expert system is based on algorithm to determine the degree of provided symptoms matching specific diseases. Solution implements weighted bipartite graph.  
+Second expert system is based on machine learning and implements the multitarget regression for adequate possibility of comparison of its work with the first system.  
+Third expert system is also based on machine learning, but it implements multiclass classification.  
+All three systems are meant to deliver an overview on differences in performance and accuracy of possible solutions to the main app objectives.  
 Application frontend is based on Angular, while backend is based on ASP .NET Core Web API. 
 
 
@@ -72,9 +72,9 @@ Requirements for setting up local environment:
 
 
 ## Project Status
-Project is: _mostly complete_ 
-All main app functionalities have been implemented.
-The only thing left in a project are some fixes to some aspects of frontend and some cleaning and code refactoring
+Project is: _mostly complete_  
+All main app functionalities have been implemented.  
+The only thing left in project are fixes to some aspects of frontend as well as some cleaning and code refactoring
 
 Room for improvement:
 - Improving the questionnaire section design and responsiveness
@@ -85,6 +85,7 @@ To do:
 - Redesigning way of chosing the other symptoms from supplementary list at the end of user questionnaire
 - Improving user questionnaire responsiveness
 - Improving display of details in diseases list
-- Improvind the display and positioning of items in main nav bar
+- Improving the display and positioning of items in main nav bar
+- Possibly adding dark theme
 - Some needed fixes to the whole app CSS
 - Some cleaning and code refactoring
